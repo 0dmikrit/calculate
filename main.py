@@ -26,6 +26,9 @@ class MainWindow(Frame):
         self.btn_equal()
 
     def press(self, item):
+        last_char = self.exp[-1] if len(self.exp) > 0 else ''
+        if last_char in ['+', '-', '*', '/'] and item in ['+', '*', '/']:
+            self.exp = self.exp[:-1]
         self.exp += str(item)
         self.text.config(text=f'{self.exp}')
 
